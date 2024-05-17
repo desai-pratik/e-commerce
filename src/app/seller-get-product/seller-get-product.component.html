@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        <h4 class="text-center my-3">Your Products</h4>
+        <p class="text-success">{{deleteProductMessage}}</p>
+
+        @for (product of productList; track product) {
+        <div class="col-md-3">
+            <div class="card my-2">
+                <img src={{product.image}} class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{product.name}}</h5>
+                    <p class="card-text mb-1">{{product.description}}</p>
+                    <div class="btn btn-sm" [style.backgroundColor]="product.color">{{product.color}}</div><br>
+                    <span class=""><b>{{product.category}}</b></span>
+                    <p><i>{{product.price}} only</i></p>
+                    <button class="btn btn-outline-danger btn-sm" (click)="deleteProduct(product.id)">Delete</button>
+                    <button class="btn btn-outline-success btn-sm mx-1"
+                        routerLink="/seller-update-product/{{product.id}}">Update</button>
+                </div>
+            </div>
+        </div>
+        }
+
+    </div>
+</div>

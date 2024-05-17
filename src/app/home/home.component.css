@@ -1,0 +1,15 @@
+.carousel-caption{
+    background-color: #00000096;
+}
+.masonry { 
+    column-count: 3;
+    break-inside: avoid;
+    /* row-gap: 1em; */
+  /*    margin: 1.5em; */
+  /*     padding: 0; */
+      /* column-gap: 1.5em;
+      font-size: .85em; */
+  }
+  .item{ 
+    break-inside: avoid;
+  }

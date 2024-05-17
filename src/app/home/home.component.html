@@ -1,0 +1,59 @@
+<div id="carouselExampleCaptions" class="carousel slide container">
+  <div class="carousel-inner">
+
+    <div class="carousel-item active">
+      <img
+        src="https://retouchaid.com/wp-content/uploads/2023/01/605b5a558848493df14d2d13_ecommerce-product-photography-2.jpg"
+        class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Second slide label</h5>
+        <p>Some representative placeholder content for the second slide.</p>
+      </div>
+    </div>
+
+    @for (product of popularProductList; track product) {
+    <a routerLink="/details/{{product.id}}">
+      <div class="carousel-item">
+        <img src={{product.image}} class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>{{product.name}}</h5>
+          <p>{{product.description}}</p>
+        </div>
+      </div>
+    </a>
+    }
+
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<div class="container mt-4"> 
+    <div class=" masonry"> 
+      @for (product of allProductList; track product) {
+      <div class="item my-3">
+        <a routerLink="/details/{{product.id}}">
+          <div class="card ">
+            <img class="card-img-top" src={{product.image}} alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{product.name | titlecase}}</h5>
+              <div class="d-flex">
+                <h6 class="card-text mb-1 me-2">Available color : </h6>
+                <div style="width: 40px; height: 20px;" [style.backgroundColor]="product.color"></div>
+              </div>
+              <p class="card-text mb-1">{{product.category}}</p>
+              <p class="card-text mb-1">{{product.description}}</p>
+              <p class="card-text"><small class="text-muted">{{product.price}}/- only</small></p>
+            </div>
+          </div>
+        </a>
+      </div>
+      }
+    </div> 
+</div>

@@ -1,0 +1,79 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      @switch (menuType) {
+      @case ("default")
+      {
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="seller-auth">Seller</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="user-auth">Login/SignUp</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" routerLink="cart-info">Cart ({{cartItem}})</a>
+        </li> -->
+      </ul>
+      }
+      @case ("seller")
+      {
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLink="seller-add-product">Add Product</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLink="seller-get-product">List</a>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link" (click)="logout('seller')">Logout</span>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link" >{{ userInfo.name }}</span>
+        </li>
+      </ul>
+      }
+      @case ("user")
+      {
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="seller-auth">Seller</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="logout('user')">Logout</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="cart-info">Cart ({{cartItem}})</a>
+          </li>
+        </ul>
+      }
+      }
+
+
+
+      @if(menuType === "default" || menuType === "user"){
+        @if(userLater){
+          <div class="d-flex justify-content-center align-item-center border rounded-pill me-2 fs-4"
+            style="width: 40px; height: 40px;">
+            {{userLater | titlecase}}
+          </div>
+        }
+      <form class="d-flex" (submit)="onFormSubmit($event)">
+        <input class="form-control me-2" #inputValue type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" (click)="clickSearch(inputValue.value)" type="submit">Search</button>
+      </form>
+      }
+    </div>
+  </div>
+</nav>

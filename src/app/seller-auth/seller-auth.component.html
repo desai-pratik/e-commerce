@@ -1,0 +1,45 @@
+@if (!isoLogin) {
+<form [formGroup]="signUpForm" (ngSubmit)="signUp()" class="container border rounded-4 col-md-4 shadow p-5 mt-4">
+  <h3 class="text-center">Seller Sign Up</h3>
+  <div class="mb-3">
+    <label for="input1" class="form-label">Username:</label>
+    <input type="text" id="username" name="username" class="form-control" placeholder="User Name" formControlName="name"
+      required>
+  </div>
+
+  <div class="mb-3">
+    <label for="Email" class="form-label">Email:</label>
+    <input type="email" id="Email" name="Email" class="form-control" placeholder="Email Address" formControlName="email"
+      required>
+  </div>
+
+  <div class="mb-3">
+    <label for="input4" class="form-label">Password:</label>
+    <input type="text" id="input4" name="password" class="form-control" placeholder="Password"
+      formControlName="password" required>
+  </div>
+  <span (click)="openLogin()">Already have Account! Click here.. </span> <br />
+  <button type="submit" class="btn btn-primary m-2" (click)="signUp()">Sign Up</button>
+</form>
+}
+
+@if (isoLogin) {
+<form [formGroup]="loinForm" (ngSubmit)="login()" class="container border rounded-4 col-md-4 shadow p-5 mt-4">
+  <h3 class="text-center">Seller Login</h3>
+  
+  <p class="text-danger">{{errorMessage}}</p>
+  <div class="mb-3">
+    <label for="Email" class="form-label">Email:</label>
+    <input type="email" id="Email" name="Email" class="form-control" placeholder="Email Address" formControlName="email"
+      required>
+  </div>
+
+  <div class="mb-3">
+    <label for="input4" class="form-label">Password:</label>
+    <input type="text" id="input4" name="password" class="form-control" placeholder="Password"
+      formControlName="password" required>
+  </div>
+  <span (click)="openLogin()">New to Here! Please Click.. </span> <br />
+  <button type="submit" class="btn btn-primary m-2" (click)="login()">Login</button>
+</form>
+}

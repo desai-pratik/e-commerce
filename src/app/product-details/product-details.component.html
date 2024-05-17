@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <img src={{productData?.image}} class="w-100" alt="">
+        </div>
+        <div class="col-md-6 mt-3">
+            <h3>{{productData?.name | titlecase}}</h3>
+            <h4>Price : {{productData?.price}}/- only</h4>
+            <h6 class="my-3">Category : {{productData?.category}}</h6>
+            <div class="d-flex ">
+                <p class="m-0 me-2">Color : </p>
+                <div style="width: 25px; height: 25px; border-radius: 50%; border-width: 5px; border-style: solid;"
+                    [style.borderColor]="productData?.color"></div>
+            </div>
+            <p class="text-secondary mt-2">{{productData?.description}}</p>
+            <p class="text-danger">{{errorMessage}}</p>
+            <div class="d-flex gap-2">
+                @if(!removeCart){
+                    <button type="button" class="btn btn-outline-secondary btn-sm" (click)="addToCard()">Add to Card</button>
+                }
+                @if(removeCart){
+                    <button type="button" class="btn btn-outline-secondary btn-sm" (click)="removeCard(productData?.id)">Remove Card</button>
+                }
+                <button type="button" class="btn btn-outline-secondary btn-sm">Buy Now</button>
+            </div>
+            <div class="d-flex mt-4 ">
+                <button class="border-0 px-3 fs-4" (click)="handleQuantity('plus')">+</button>
+                <input type="number" value="{{productQuantity}}" disabled class="text-center desabled" style="max-width: 50px; ">
+                <button class="border-0 px-3 fs-4" (click)="handleQuantity('minus')">-</button>
+            </div>
+        </div>
+    </div>
+</div>

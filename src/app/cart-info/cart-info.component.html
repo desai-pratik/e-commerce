@@ -1,0 +1,51 @@
+<div class="container">
+
+    <h3 class="text-center my-3">Cart List</h3>
+    @if(!cartList.length){
+    <p class="text-center">no carts available</p>
+    }
+    @if(cartList.length){
+        <div class="row">
+            <div class="col-md-9">
+                @for (cart of cartList; track cart) {
+                <div class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-4 d-flex justify-content-center align-items-center">
+                            <img src="{{cart.image}}" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <h5 class="card-title m-0">{{cart.name | titlecase}}</h5>
+                                        <h6 class="text-secondary">{{cart.category | titlecase}}</h6>
+                                    </div>
+                                    <div style="width: 25px; height: 25px; border-radius: 50%; border-width: 5px; border-style: solid;"
+                                        [style.borderColor]="cart?.color" title="Available: {{cart?.color}}"></div>
+                                </div>
+                                <p class="card-text m-0">{{cart.description}}</p>
+                                <p class="card-text "><small class="text-muted">₹ {{cart.price}}/- only for one.</small></p>
+                                <div class="d-flex justify-content-between align-items-end">
+                                    <button type="button" class="btn btn-outline-secondary btn-sm"
+                                        (click)="removeCard(cart?.id)">Remove Card</button>
+                                    <small class="text-muted">Quantity : {{cart.quantity}}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                } 
+            </div>
+            <div class="col-md-3 border rounded p-3">
+                <h4 class="">Summary</h4>
+                <h6>Price : {{priceSummary.price}}/- only</h6>
+                <h6>Tex : {{priceSummary.tex}} (18%)</h6>
+                <h6>Discount : ₹ {{priceSummary.discount}} (10%)</h6>
+                <h6>Delivery : ₹ {{priceSummary.delivery}} only</h6>
+                <h6 class="text-danger">Total : ₹ {{priceSummary.total}}/- only</h6>
+                <button class="btn btn-outline-success btn-sm mx-1"
+                        routerLink="/checkout">Add Order</button>
+            </div>
+        </div>
+    }
+</div>
