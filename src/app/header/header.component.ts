@@ -1,10 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { ProductService } from '../services/product.service';
 import { HttpClientModule } from '@angular/common/http';
 import { TitleCasePipe } from '@angular/common';
-import { product } from '../data-type';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'header',
